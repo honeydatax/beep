@@ -1,0 +1,11 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,64,64)
+  Background = Color.DarkMagenta
+  { ListBox1 ListBox
+    MoveScaled(1,1,62,62)
+    Background = Color.DarkMagenta
+    Foreground = Color.ButtonBackground
+  }
+}

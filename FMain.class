@@ -1,0 +1,32 @@
+' Gambas class file
+
+'Gambas class file
+Private z As String[]
+Private x As Integer
+
+Public Sub Form_Open()
+  Dim a As String
+  Dim b As File
+  Dim c As String
+  Dim d As String
+  Dim e As String[]
+  x = 0
+  z = New String[]
+  b = Open "/home/pi/menu/menu.list" For Input
+  Do
+    Line Input #b, a
+    e = Split(a, "=")
+    ListBox1.Add(e[0])
+    If InStr(a, "=") > 0 Then
+      z.Add(e[1])
+      x = x + 1
+    End If
+  Loop Until Eof(b)
+
+End
+
+Public Sub ListBox1_Click()
+
+  Shell (z[ListBox1.Index])
+
+End
