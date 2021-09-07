@@ -1,8 +1,10 @@
 ' Gambas class file
 
 'Gambas class file
-Private z As String[]
-Private x As Integer
+Public z As String[]
+Public cc As String
+
+
 
 Public Sub Form_Open()
   Dim a As String
@@ -11,24 +13,45 @@ Public Sub Form_Open()
   Dim d As String
   Dim e As String[]
   Dim command As String
+  command = "/home/pi/menu/menu/menu1.list"
   command = Args[1]
-  x = 0
+  cc = command
+  
   z = New String[]
   b = Open command For Input
   Do
     Line Input #b, a
     e = Split(a, "=")
-    ListBox1.Add(e[0])
     If InStr(a, "=") > 0 Then
+      ListBox1.Add(e[0])
       z.Add(e[1])
-      x = x + 1
     End If
   Loop Until Eof(b)
   Close #b
 End
 
 Public Sub ListBox1_Click()
+  Print z.Count
+  Print ListBox1.Count
+  Shell (z[ListBox1.Index] & " 2> /dev/null")
+Finally
+Catch
+End
 
-  Shell (z[ListBox1.Index])
-
+Public Sub Menu2_Click()
+  Dim b As File
+  Dim commands As String
+  Dim command As String
+  Dim zz As String[]
+  command = cc
+  commands = InputBox("command to run?", "label=command")
+  b = Open command For Append
+    Print #b, commands
+  Close #b
+  If InStr(commands, "=") > 0 Then
+    zz = Split(commands, "=")
+    ListBox1.Add(zz[0])
+    z.Add(zz[1])
+  Endif
+    
 End
