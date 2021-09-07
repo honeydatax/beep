@@ -24,7 +24,7 @@ Public Sub Form_Open()
       x = x + 1
     End If
   Loop Until Eof(b)
-
+  Close #b
 End
 
 Public Sub ListBox1_Click()
