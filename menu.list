@@ -1,4 +1,6 @@
-mousepad=mousepad
-calc=galculator
-geany=geany
-command=exo-open --launch TerminalEmulator
+mousepad|mousepad
+calc|galculator
+geany|geany
+command|exo-open --launch TerminalEmulator
+mousepad2|mousepad
+X|mousepad

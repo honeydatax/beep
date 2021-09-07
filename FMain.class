@@ -21,8 +21,8 @@ Public Sub Form_Open()
   b = Open command For Input
   Do
     Line Input #b, a
-    e = Split(a, "=")
-    If InStr(a, "=") > 0 Then
+    e = Split(a, "|")
+    If InStr(a, "|") > 0 Then
       ListBox1.Add(e[0])
       z.Add(e[1])
     End If
@@ -44,12 +44,12 @@ Public Sub Menu2_Click()
   Dim command As String
   Dim zz As String[]
   command = cc
-  commands = InputBox("command to run?", "label=command")
+  commands = InputBox("command to run?", "label|command")
   b = Open command For Append
     Print #b, commands
   Close #b
-  If InStr(commands, "=") > 0 Then
-    zz = Split(commands, "=")
+  If InStr(commands, "|") > 0 Then
+    zz = Split(commands, "|")
     ListBox1.Add(zz[0])
     z.Add(zz[1])
   Endif
