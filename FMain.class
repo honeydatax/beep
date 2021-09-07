@@ -10,9 +10,11 @@ Public Sub Form_Open()
   Dim c As String
   Dim d As String
   Dim e As String[]
+  Dim command As String
+  command = Args[1]
   x = 0
   z = New String[]
-  b = Open "/home/pi/menu/menu.list" For Input
+  b = Open command For Input
   Do
     Line Input #b, a
     e = Split(a, "=")
