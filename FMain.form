@@ -9,6 +9,12 @@
       Text = ("add item")
     }
   }
+  { Menu3 Menu
+    Text = ("edit")
+    { Menu4 Menu
+      Text = ("edit")
+    }
+  }
   { ListBox1 ListBox
     MoveScaled(1,1,62,62)
     Background = Color.DarkMagenta

@@ -3,7 +3,7 @@
 'Gambas class file
 Public z As String[]
 Public cc As String
-
+Const prg As String = "mousepad"
 
 
 Public Sub Form_Open()
@@ -13,10 +13,10 @@ Public Sub Form_Open()
   Dim d As String
   Dim e As String[]
   Dim command As String
-  command = "/home/pi/menu/menu/menu1.list"
+  command = "/home/pi/menu/menu/menu.list"
   command = Args[1]
   cc = command
-  
+  ListBox1.Clear
   z = New String[]
   b = Open command For Input
   Do
@@ -54,4 +54,10 @@ Public Sub Menu2_Click()
     z.Add(zz[1])
   Endif
     
+End
+
+Public Sub Menu4_Click()
+Shell prg & " " & cc Wait
+Form_Open()  
+
 End
