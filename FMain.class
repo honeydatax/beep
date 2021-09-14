@@ -1,63 +1,70 @@
 ' Gambas class file
 
-'Gambas class file
-Public z As String[]
-Public cc As String
-Const prg As String = "mousepad"
+Const Outputf As String = "out.png"
+Public command As String
+Public l As String[]
+Public img As Image
+Const runer As String = "curl "
+
+Public Sub ImageView1_MouseUp()
+  form_MouseUp()
+End
 
 
+Public Sub form_MouseUp()
+  Dim f As File
+  Dim s As String
+  Dim ss As String
+  Dim n As Integer
+  Dim w As Float 
+  Dim maxx As Integer
+  l = New String[]
+  
+  inputBox("get url", "Url", command)
+  s = ""
+  Shell runer & command Wait To s
+  f = Open User.Home & "/my.txt" For Create
+    Print #f, s
+  Close f
+s = Replace(s, gb.cr, "")
+s = Replace(s, Chr(12), "")
+  l = Split(s, gb.Lf)
+  s = ""
+  For n = 0 To l.Count - 1
+    ss = Trim(l[n])
+    If ss <> "" Then s = s & ss & gb.Lf 
+  Next
+  
+  ScrollBar1.MaxValue = 2000
+  ScrollBar2.MaxValue = 600
+  ImageView1.Image = New Image(ScrollBar2.MaxValue, ScrollBar1.MaxValue)
+  ImageView1.Width = ScrollBar2.MaxValue
+  ImageView1.Height = ScrollBar1.MaxValue
+  Paint.Begin(ImageView1.Image)
+  Paint.font = Font["free mono,12"]
+  Paint.FillRect(0, 0, ScrollBar2.MaxValue, ScrollBar1.MaxValue, Color.DarkMagenta)
+      Paint.DrawRichText(s, 0, 0, ScrollBar2.MaxValue, ScrollBar1.MaxValue, 4)
+  Paint.End
+  
+  'debug
+      
+  
+  
+  
+End
 Public Sub Form_Open()
-  Dim a As String
-  Dim b As File
-  Dim c As String
-  Dim d As String
-  Dim e As String[]
-  Dim command As String
-  command = "/home/pi/menu/menu/menu.list"
-  command = Args[1]
-  cc = command
-  ListBox1.Clear
-  z = New String[]
-  b = Open command For Input
-  Do
-    Line Input #b, a
-    e = Split(a, "|")
-    If InStr(a, "|") > 0 Then
-      ListBox1.Add(e[0])
-      z.Add(e[1])
-    End If
-  Loop Until Eof(b)
-  Close #b
+  command = "http://localhost:8080"
 End
 
-Public Sub ListBox1_Click()
-  Print z.Count
-  Print ListBox1.Count
-  Shell (z[ListBox1.Index] & " 2> /dev/null")
-Finally
-Catch
+
+Public Sub ScrollBar1_Change()
+  ImageView1.Y = - ScrollBar1.Value
 End
 
-Public Sub Menu2_Click()
-  Dim b As File
-  Dim commands As String
-  Dim command As String
-  Dim zz As String[]
-  command = cc
-  commands = InputBox("command to run?", "label|command")
-  b = Open command For Append
-    Print #b, commands
-  Close #b
-  If InStr(commands, "|") > 0 Then
-    zz = Split(commands, "|")
-    ListBox1.Add(zz[0])
-    z.Add(zz[1])
-  Endif
-    
+Public Sub ScrollBar2_Change()
+  ImageView1.X = - ScrollBar2.Value
 End
 
-Public Sub Menu4_Click()
-Shell prg & " " & cc Wait
-Form_Open()  
 
-End
+
+
