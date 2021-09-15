@@ -1,2 +1,2 @@
-# execMenu
-Executable menu link gambas basic project
+# curl browser
+curl menu link gambas basic project
