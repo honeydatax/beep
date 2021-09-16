@@ -2,16 +2,17 @@
 
 Public xx As Integer
 Public yy As Integer
+Public colors As Integer
 
 Public Sub ImageView1_MouseDown()
 Dim m As Mouse
 Dim x As Integer
 Dim y As Integer
 paint.Begin(ImageView1.Image)
-  Paint.Color(Color.black)
+  Paint.Color(colors)
   x = Mouse.X
   y = Mouse.y
-Paint.FillRect(x, y, 5, 5, Color.black) 
+Paint.FillRect(x, y, 5, 5, colors) 
 Paint.End
 ImageView1.Refresh()
 xx = m.x
@@ -24,4 +25,16 @@ paint.Begin(ImageView1.Image)
   Paint.FillRect(0, 0, ImageView1.Width, ImageView1.Height, Color.DarkMagenta)
   Paint.Color(Color.Black)
 Paint.End  
+End
+
+Public Sub Menu1_Click()
+
+  ColorChooser1.Visible = Not ColorChooser1.Visible
+
+End
+
+Public Sub ColorChooser1_Change()
+
+  colors = ColorChooser1.Value
+
 End

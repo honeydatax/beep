@@ -4,7 +4,17 @@
   MoveScaled(0,0,64,64)
   Background = Color.DarkMagenta
   Foreground = Color.White
+  { Menu2 Menu
+    Text = ("color")
+    { Menu1 Menu
+      Text = ("color")
+    }
+  }
   { ImageView1 ImageView
-    MoveScaled(1,1,60,62)
+    MoveScaled(1,1,60,55)
+  }
+  { ColorChooser1 ColorChooser
+    MoveScaled(1,6,51,33)
+    Visible = False
   }
 }
