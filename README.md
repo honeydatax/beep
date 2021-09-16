@@ -1,2 +1,2 @@
-# curl browser
-curl menu link gambas basic project
+# gambas paint
+gambas paint sample
