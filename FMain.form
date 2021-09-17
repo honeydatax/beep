@@ -21,6 +21,9 @@
     { Menu6 Menu
       Text = ("line")
     }
+    { Menu8 Menu
+      Text = ("point")
+    }
     { Menu7 Menu
       Text = ("save")
     }

@@ -19,7 +19,7 @@ paint.Begin(ImageView1.Image)
   Paint.Color(colors)
   x = Mouse.X
   y = Mouse.y
-If funct = 0 Then Paint.FillRect(xx, yy, x, y, colors) 
+If funct = 0 Then Paint.FillRect(xx, yy, x - xx, y - yy, colors) 
 Paint.End
 Draw.Begin(ImageView1.Image)
   Draw.Foreground = colors
@@ -27,10 +27,13 @@ If funct = 1 Then
   Draw.Rect(xx, yy, x - xx, y - yy)
 End If
 If funct = 2 Then 
-  Draw.Ellipse(xx, yy, x, y)
+  Draw.Ellipse(xx, yy, x - xx, y - yy)
 End If
 If funct = 3 Then 
   Draw.Line(xx, yy, x, y)
+End If
+If funct = 4 Then 
+  Draw.Line(x, y, x + 1, y + 1)
 End If
 
 Draw.End
@@ -90,5 +93,11 @@ Public Sub Menu7_Click()
   
   s = InputBox("write image", "write image", s)
    ImageView1.Image.Save(user.Home & "/" & s)  
+
+End
+
+Public Sub Menu8_Click()
+
+  funct = 4
 
 End
