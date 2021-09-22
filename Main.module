@@ -9,19 +9,19 @@ Dim $hOutput As MediaControl
 Dim $hFilter As MediaControl
 Dim $hEncoder As MediaControl
 Dim f As Integer
-Dim v As Integer
-Dim t As Integer
+Dim v As Float
+Dim t As Float
 f = 1500
 v = 10
 t = 2
 If Args[1] <> "" Then  
-  f = Str(Trim(Args[1]))
+  f = Val(Trim(Args[1]))
 Endif
 If Args[2] <> "" Then  
-  t = Str(Trim(Args[2]))
+  t = Val(Trim(Args[2]))
 Endif
 If Args[3] <> "" Then  
-  v = Str(Trim(Args[3]))
+  v = Val(Trim(Args[3]))
 Endif
   $hPlayer = New MediaPipeline As "Pipeline"
   $hAudio = New MediaControl($hPlayer, "audiotestsrc")
